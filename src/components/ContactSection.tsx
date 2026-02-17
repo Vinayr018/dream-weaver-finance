@@ -8,18 +8,13 @@ const ContactSection = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // UI only
   };
 
   return (
-    <section id="contact" className="section-padding relative">
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
-      </div>
-
+    <section id="contact" className="section-padding relative sparkle-line-top">
       <div className="container mx-auto" ref={ref}>
         <div className={`text-center mb-16 transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
-          <span className="text-primary text-sm font-semibold uppercase tracking-widest">Contact Us</span>
+          <span className="text-primary text-sm font-semibold uppercase tracking-[0.2em]">Contact Us</span>
           <h2 className="font-display text-3xl md:text-5xl font-bold mt-3 mb-6">
             Let's <span className="gold-gradient-text">Connect</span>
           </h2>
@@ -28,49 +23,37 @@ const ContactSection = () => {
         <div className={`grid lg:grid-cols-2 gap-8 transition-all duration-700 delay-200 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
           {/* Info */}
           <div className="space-y-6">
-            <div className="glass-card rounded-2xl p-8 gold-border-glow space-y-6">
-              <div className="flex items-start gap-4">
-                <div className="w-10 h-10 rounded-lg gold-gradient-bg flex items-center justify-center shrink-0">
-                  <MapPin className="w-5 h-5 text-primary-foreground" />
+            <div className="luxury-card rounded-2xl p-8 space-y-6">
+              {[
+                { Icon: MapPin, title: "Our Office", text: "Tumakuru, Karnataka, India" },
+                { Icon: Mail, title: "Email", text: "info@findreams.com" },
+                { Icon: Phone, title: "Phone", text: "+91 90000 00000" },
+              ].map(({ Icon, title, text }) => (
+                <div key={title} className="flex items-start gap-4">
+                  <div className="w-11 h-11 rounded-full gold-border-strong flex items-center justify-center shrink-0 bg-primary/[0.06]">
+                    <Icon className="w-5 h-5 text-primary" />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold mb-1">{title}</h4>
+                    <p className="text-silver text-sm">{text}</p>
+                  </div>
                 </div>
-                <div>
-                  <h4 className="font-semibold mb-1">Our Office</h4>
-                  <p className="text-muted-foreground text-sm">Tumakuru, Karnataka, India</p>
-                </div>
-              </div>
-              <div className="flex items-start gap-4">
-                <div className="w-10 h-10 rounded-lg gold-gradient-bg flex items-center justify-center shrink-0">
-                  <Mail className="w-5 h-5 text-primary-foreground" />
-                </div>
-                <div>
-                  <h4 className="font-semibold mb-1">Email</h4>
-                  <p className="text-muted-foreground text-sm">info@findreams.com</p>
-                </div>
-              </div>
-              <div className="flex items-start gap-4">
-                <div className="w-10 h-10 rounded-lg gold-gradient-bg flex items-center justify-center shrink-0">
-                  <Phone className="w-5 h-5 text-primary-foreground" />
-                </div>
-                <div>
-                  <h4 className="font-semibold mb-1">Phone</h4>
-                  <p className="text-muted-foreground text-sm">+91 90000 00000</p>
-                </div>
-              </div>
+              ))}
             </div>
 
             {/* Map placeholder */}
-            <div className="glass-card rounded-2xl overflow-hidden gold-border-glow h-48 flex items-center justify-center">
-              <div className="text-center text-muted-foreground">
-                <MapPin className="w-8 h-8 mx-auto mb-2 text-primary/50" />
+            <div className="luxury-card rounded-2xl overflow-hidden h-48 flex items-center justify-center">
+              <div className="text-center text-silver">
+                <MapPin className="w-8 h-8 mx-auto mb-2 text-primary/40" />
                 <p className="text-sm">Tumakuru, Karnataka</p>
               </div>
             </div>
           </div>
 
           {/* Form */}
-          <form onSubmit={handleSubmit} className="glass-card rounded-2xl p-8 gold-border-glow space-y-5">
+          <form onSubmit={handleSubmit} className="luxury-card rounded-2xl p-8 space-y-5">
             <div>
-              <label className="text-sm font-medium mb-1.5 block">Full Name</label>
+              <label className="text-sm font-medium mb-1.5 block text-silver-light">Full Name</label>
               <input
                 type="text"
                 value={formData.name}
@@ -80,7 +63,7 @@ const ContactSection = () => {
               />
             </div>
             <div>
-              <label className="text-sm font-medium mb-1.5 block">Email</label>
+              <label className="text-sm font-medium mb-1.5 block text-silver-light">Email</label>
               <input
                 type="email"
                 value={formData.email}
@@ -90,7 +73,7 @@ const ContactSection = () => {
               />
             </div>
             <div>
-              <label className="text-sm font-medium mb-1.5 block">Message</label>
+              <label className="text-sm font-medium mb-1.5 block text-silver-light">Message</label>
               <textarea
                 rows={4}
                 value={formData.message}
@@ -101,7 +84,7 @@ const ContactSection = () => {
             </div>
             <button
               type="submit"
-              className="w-full gold-gradient-bg text-primary-foreground py-3.5 rounded-xl font-semibold flex items-center justify-center gap-2 hover:opacity-90 transition-all gold-glow hover:gold-glow-strong"
+              className="w-full gold-gradient-bg text-primary-foreground py-3.5 rounded-xl font-semibold flex items-center justify-center gap-2 transition-all gold-glow-strong hover:scale-[1.02]"
             >
               Send Message
               <Send className="w-4 h-4" />
