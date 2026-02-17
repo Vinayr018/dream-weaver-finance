@@ -3,7 +3,7 @@ import { Facebook, Twitter, Instagram, Linkedin } from "lucide-react";
 
 const Footer = () => {
   return (
-    <footer className="border-t border-border/30 bg-card/30">
+    <footer className="border-t border-border/30 bg-background sparkle-line-top">
       <div className="container mx-auto px-4 py-12">
         <div className="grid md:grid-cols-3 gap-8 mb-8">
           {/* Brand */}
@@ -12,7 +12,7 @@ const Footer = () => {
               <img src={logo} alt="Findreams" className="w-10 h-10 object-contain" />
               <span className="font-display text-xl font-bold gold-gradient-text">FINDREAMS SOLUTIONS</span>
             </div>
-            <p className="text-muted-foreground text-sm leading-relaxed">
+            <p className="text-silver text-sm leading-relaxed">
               Turning dreams into financial reality. Your trusted partner for loans and financial consulting.
             </p>
           </div>
@@ -25,7 +25,7 @@ const Footer = () => {
                 <a
                   key={link}
                   href={`#${link.toLowerCase().replace(" ", "-")}`}
-                  className="block text-muted-foreground text-sm hover:text-primary transition-colors"
+                  className="block text-silver text-sm hover:text-primary transition-colors"
                 >
                   {link}
                 </a>
@@ -41,21 +41,21 @@ const Footer = () => {
                 <a
                   key={i}
                   href="#"
-                  className="w-10 h-10 rounded-lg border border-border/50 flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary/30 transition-all"
+                  className="w-10 h-10 rounded-full gold-border-glow flex items-center justify-center text-silver hover:text-primary hover:gold-glow transition-all duration-300"
                 >
                   <Icon className="w-4 h-4" />
                 </a>
               ))}
             </div>
-            <div className="glass-card rounded-xl p-4 gold-border-glow">
-              <p className="text-xs text-muted-foreground mb-1">Suggested Domain</p>
+            <div className="luxury-card rounded-xl p-4">
+              <p className="text-xs text-silver mb-1">Suggested Domain</p>
               <p className="text-primary font-semibold text-sm">findreamssolutions.com</p>
             </div>
           </div>
         </div>
 
         <div className="border-t border-border/30 pt-6 text-center">
-          <p className="text-muted-foreground text-xs">
+          <p className="text-silver text-xs">
             © {new Date().getFullYear()} Findreams Solutions. All rights reserved.
           </p>
         </div>

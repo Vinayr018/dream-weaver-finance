@@ -28,14 +28,10 @@ const WhyChooseUs = () => {
   const { ref, isVisible } = useScrollAnimation();
 
   return (
-    <section id="why-us" className="section-padding relative">
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
-      </div>
-
+    <section id="why-us" className="section-padding relative sparkle-line-top">
       <div className="container mx-auto" ref={ref}>
         <div className={`text-center mb-16 transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
-          <span className="text-primary text-sm font-semibold uppercase tracking-widest">Why Choose Us</span>
+          <span className="text-primary text-sm font-semibold uppercase tracking-[0.2em]">Why Choose Us</span>
           <h2 className="font-display text-3xl md:text-5xl font-bold mt-3 mb-6">
             The <span className="gold-gradient-text">Findreams</span> Advantage
           </h2>
@@ -45,16 +41,17 @@ const WhyChooseUs = () => {
           {features.map((f, i) => (
             <div
               key={f.title}
-              className={`text-center glass-card rounded-2xl p-8 gold-border-glow hover:gold-glow transition-all duration-500 hover:-translate-y-2 ${
+              className={`text-center luxury-card rounded-2xl p-8 transition-all duration-500 hover:-translate-y-2 ${
                 isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
               }`}
               style={{ transitionDelay: isVisible ? `${200 + i * 100}ms` : "0ms" }}
             >
-              <div className="w-16 h-16 rounded-2xl gold-gradient-bg flex items-center justify-center mx-auto mb-5">
-                <f.icon className="w-8 h-8 text-primary-foreground" />
+              {/* Gold-ringed circle icon */}
+              <div className="w-18 h-18 w-[72px] h-[72px] rounded-full gold-border-strong flex items-center justify-center mx-auto mb-5 bg-primary/[0.06]">
+                <f.icon className="w-8 h-8 text-primary" />
               </div>
               <h3 className="font-display text-lg font-bold mb-2">{f.title}</h3>
-              <p className="text-muted-foreground text-sm leading-relaxed">{f.description}</p>
+              <p className="text-silver text-sm leading-relaxed">{f.description}</p>
             </div>
           ))}
         </div>
