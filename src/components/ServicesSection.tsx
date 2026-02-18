@@ -1,4 +1,5 @@
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import { motion } from "framer-motion";
 import {
   Wallet,
   GraduationCap,
@@ -7,31 +8,42 @@ import {
   LineChart,
 } from "lucide-react";
 
+import imgPersonal from "@/assets/service-personal-loan.jpg";
+import imgEducation from "@/assets/service-education-loan.jpg";
+import imgBusiness from "@/assets/service-business-loan.jpg";
+import imgHome from "@/assets/service-home-loan.jpg";
+import imgConsulting from "@/assets/service-consulting.jpg";
+
 const services = [
   {
     icon: Wallet,
     title: "Personal Loans",
     description: "Flexible personal loans tailored to your needs with competitive rates and quick disbursement.",
+    image: imgPersonal,
   },
   {
     icon: GraduationCap,
     title: "Education Loans",
     description: "Invest in your future with our education financing solutions for students at every level.",
+    image: imgEducation,
   },
   {
     icon: Briefcase,
     title: "Business Loans",
     description: "Fuel your entrepreneurial vision with capital solutions designed for businesses of all sizes.",
+    image: imgBusiness,
   },
   {
     icon: Home,
     title: "Home Loans",
     description: "Make your dream home a reality with our affordable and transparent home financing options.",
+    image: imgHome,
   },
   {
     icon: LineChart,
     title: "Financial Consulting",
     description: "Expert guidance to optimize your finances, plan investments, and achieve long-term wealth.",
+    image: imgConsulting,
   },
 ];
 
@@ -58,28 +70,43 @@ const ServicesSection = () => {
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {services.map((service, i) => (
-            <div
+            <motion.div
               key={service.title}
-              className={`group luxury-card rounded-2xl p-8 transition-all duration-500 hover:-translate-y-2 cursor-pointer ${
-                isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-              }`}
-              style={{ transitionDelay: isVisible ? `${200 + i * 100}ms` : "0ms" }}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: i * 0.1, ease: "easeOut" }}
+              className="group luxury-card rounded-2xl overflow-hidden cursor-pointer hover:-translate-y-2 transition-transform duration-500"
             >
-              {/* Icon with pulsing gold ring */}
-              <div className="relative w-16 h-16 rounded-full gold-border-strong flex items-center justify-center mb-6 bg-primary/[0.06] group-hover:bg-primary/[0.12] transition-all duration-500">
-                <service.icon className="w-7 h-7 text-primary" />
-                {/* Hover ring */}
-                <div className="absolute inset-0 rounded-full border border-primary/0 group-hover:border-primary/20 group-hover:scale-[1.3] transition-all duration-500 opacity-0 group-hover:opacity-100" />
+              {/* Image with animated overlay */}
+              <div className="relative h-44 overflow-hidden">
+                <img
+                  src={service.image}
+                  alt={service.title}
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent" />
+                {/* Animated gold shimmer on hover */}
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/10 to-transparent translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-1000" />
               </div>
-              <h3 className="font-display text-xl font-bold mb-3 group-hover:text-primary transition-colors">
-                {service.title}
-              </h3>
-              <p className="text-silver leading-relaxed text-sm">
-                {service.description}
-              </p>
-              {/* Bottom gold accent line */}
-              <div className="mt-6 h-px bg-gradient-to-r from-primary/40 via-primary/20 to-transparent w-0 group-hover:w-full transition-all duration-500" />
-            </div>
+
+              <div className="p-6">
+                {/* Icon */}
+                <div className="relative w-14 h-14 rounded-full gold-border-strong flex items-center justify-center mb-4 bg-primary/[0.06] group-hover:bg-primary/[0.12] transition-all duration-500 -mt-12 relative z-10">
+                  <service.icon className="w-6 h-6 text-primary" />
+                  <div className="absolute inset-0 rounded-full border border-primary/0 group-hover:border-primary/20 group-hover:scale-[1.3] transition-all duration-500 opacity-0 group-hover:opacity-100" />
+                </div>
+                <h3 className="font-display text-xl font-bold mb-2 group-hover:text-primary transition-colors">
+                  {service.title}
+                </h3>
+                <p className="text-silver leading-relaxed text-sm">
+                  {service.description}
+                </p>
+                {/* Bottom gold accent line */}
+                <div className="mt-4 h-px bg-gradient-to-r from-primary/40 via-primary/20 to-transparent w-0 group-hover:w-full transition-all duration-500" />
+              </div>
+            </motion.div>
           ))}
         </div>
       </div>
