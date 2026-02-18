@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { ArrowRight, Sparkles } from "lucide-react";
 import logo from "@/assets/findreams-logo.png";
+import heroImage from "@/assets/hero-finance.jpg";
 import GoldParticles from "./GoldParticles";
 
 const HeroSection = () => {
@@ -9,12 +10,22 @@ const HeroSection = () => {
       id="hero"
       className="relative min-h-screen flex items-center justify-center overflow-hidden section-padding pt-28"
     >
+      {/* Background image with animated overlay */}
+      <motion.div
+        initial={{ scale: 1.1, opacity: 0 }}
+        animate={{ scale: 1, opacity: 0.25 }}
+        transition={{ duration: 2, ease: "easeOut" }}
+        className="absolute inset-0 z-0"
+      >
+        <img src={heroImage} alt="" className="w-full h-full object-cover" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background via-background/80 to-background" />
+      </motion.div>
+
       {/* Floating gold particles */}
       <GoldParticles />
 
       {/* Animated background elements */}
-      <div className="absolute inset-0 pointer-events-none">
-        {/* Central gold orb */}
+      <div className="absolute inset-0 pointer-events-none z-[1]">
         <motion.div
           animate={{ scale: [1, 1.15, 1], opacity: [0.03, 0.06, 0.03] }}
           transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
@@ -40,7 +51,6 @@ const HeroSection = () => {
           }}
         />
 
-        {/* Top & bottom sparkle lines */}
         <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
         <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
       </div>
@@ -58,7 +68,6 @@ const HeroSection = () => {
               alt="Findreams Solutions"
               className="w-36 h-36 md:w-52 md:h-52 mx-auto object-contain drop-shadow-2xl animate-float"
             />
-            {/* Pulsing ring behind logo */}
             <motion.div
               animate={{ scale: [1, 1.3, 1], opacity: [0.15, 0.05, 0.15] }}
               transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
@@ -69,7 +78,6 @@ const HeroSection = () => {
               transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
               className="absolute inset-0 w-full h-full rounded-full border border-primary/10 -z-10"
             />
-            {/* Glow behind logo */}
             <div className="absolute inset-0 w-full h-full bg-primary/10 rounded-full blur-3xl -z-10 animate-glow-pulse" />
           </div>
         </motion.div>
