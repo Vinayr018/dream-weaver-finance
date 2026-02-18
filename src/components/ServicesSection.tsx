@@ -39,10 +39,10 @@ const ServicesSection = () => {
   const { ref, isVisible } = useScrollAnimation();
 
   return (
-    <section id="services" className="section-padding relative sparkle-line-top">
+    <section id="services" className="section-padding relative sparkle-line-top overflow-hidden">
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/2 right-0 w-72 h-72 bg-primary/[0.02] rounded-full blur-[100px]" />
-        <div className="absolute bottom-1/4 left-0 w-60 h-60 bg-silver/[0.02] rounded-full blur-[80px]" />
+        <div className="absolute top-1/2 right-0 w-96 h-96 bg-primary/[0.025] rounded-full blur-[120px]" />
+        <div className="absolute bottom-0 left-1/4 w-72 h-72 bg-silver/[0.02] rounded-full blur-[100px]" />
       </div>
 
       <div className="container mx-auto relative z-10" ref={ref}>
@@ -65,9 +65,11 @@ const ServicesSection = () => {
               }`}
               style={{ transitionDelay: isVisible ? `${200 + i * 100}ms` : "0ms" }}
             >
-              {/* Icon with gold ring */}
-              <div className="w-16 h-16 rounded-full gold-border-strong flex items-center justify-center mb-6 group-hover:gold-glow-strong transition-all duration-500 bg-primary/[0.06]">
+              {/* Icon with pulsing gold ring */}
+              <div className="relative w-16 h-16 rounded-full gold-border-strong flex items-center justify-center mb-6 bg-primary/[0.06] group-hover:bg-primary/[0.12] transition-all duration-500">
                 <service.icon className="w-7 h-7 text-primary" />
+                {/* Hover ring */}
+                <div className="absolute inset-0 rounded-full border border-primary/0 group-hover:border-primary/20 group-hover:scale-[1.3] transition-all duration-500 opacity-0 group-hover:opacity-100" />
               </div>
               <h3 className="font-display text-xl font-bold mb-3 group-hover:text-primary transition-colors">
                 {service.title}
