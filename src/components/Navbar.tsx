@@ -1,19 +1,21 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
+import { Link, useLocation } from "react-router-dom";
 import logo from "@/assets/findreams-logo.png";
 
 const navLinks = [
-  { label: "Home", href: "#hero" },
-  { label: "About", href: "#about" },
-  { label: "Services", href: "#services" },
-  { label: "Why Us", href: "#why-us" },
-  { label: "Contact", href: "#contact" },
+  { label: "Home", href: "/" },
+  { label: "About", href: "/about" },
+  { label: "Services", href: "/services" },
+  { label: "Why Us", href: "/why-us" },
+  { label: "Contact", href: "/contact" },
 ];
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
+  const location = useLocation();
 
   useEffect(() => {
     const onScroll = () => {
@@ -24,6 +26,11 @@ const Navbar = () => {
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  useEffect(() => {
+    setMobileOpen(false);
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
 
   return (
     <>
@@ -41,30 +48,34 @@ const Navbar = () => {
         }`}
       >
         <div className="container mx-auto flex items-center justify-between px-4">
-          <a href="#hero" className="flex items-center gap-2">
+          <Link to="/" className="flex items-center gap-2">
             <img src={logo} alt="Findreams Solutions" className="h-10 w-10 object-contain" />
             <span className="font-display text-lg font-bold gold-gradient-text hidden sm:block">
-              FINDREAMS
+              FINDREAMS SOLUTIONS
             </span>
-          </a>
+          </Link>
 
           {/* Desktop */}
           <div className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
-              <a
+              <Link
                 key={link.href}
-                href={link.href}
-                className="text-sm font-medium text-foreground/70 hover:text-primary transition-colors duration-300 relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-px after:bg-primary after:transition-all after:duration-300 hover:after:w-full"
+                to={link.href}
+                className={`text-sm font-medium transition-colors duration-300 relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-px after:bg-primary after:transition-all after:duration-300 ${
+                  location.pathname === link.href
+                    ? "text-primary after:w-full"
+                    : "text-foreground/70 hover:text-primary after:w-0 hover:after:w-full"
+                }`}
               >
                 {link.label}
-              </a>
+              </Link>
             ))}
-            <a
-              href="#contact"
+            <Link
+              to="/contact"
               className="gold-gradient-bg text-primary-foreground px-5 py-2 rounded-lg text-sm font-semibold hover:opacity-90 transition-opacity"
             >
               Get Started
-            </a>
+            </Link>
           </div>
 
           {/* Mobile toggle */}
@@ -80,22 +91,22 @@ const Navbar = () => {
         {mobileOpen && (
           <div className="md:hidden glass-card mt-2 mx-4 rounded-xl p-4 animate-fade-up">
             {navLinks.map((link) => (
-              <a
+              <Link
                 key={link.href}
-                href={link.href}
-                onClick={() => setMobileOpen(false)}
-                className="block py-3 text-foreground/80 hover:text-primary transition-colors border-b border-border/30 last:border-0"
+                to={link.href}
+                className={`block py-3 transition-colors border-b border-border/30 last:border-0 ${
+                  location.pathname === link.href ? "text-primary" : "text-foreground/80 hover:text-primary"
+                }`}
               >
                 {link.label}
-              </a>
+              </Link>
             ))}
-            <a
-              href="#contact"
-              onClick={() => setMobileOpen(false)}
+            <Link
+              to="/contact"
               className="block mt-3 text-center gold-gradient-bg text-primary-foreground px-5 py-2.5 rounded-lg font-semibold"
             >
               Get Started
-            </a>
+            </Link>
           </div>
         )}
       </nav>
