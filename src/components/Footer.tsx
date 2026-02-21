@@ -1,5 +1,5 @@
 import logo from "@/assets/findreams-logo.png";
-import { Facebook, Twitter, Instagram, Linkedin, Globe } from "lucide-react";
+import { Facebook, Twitter, Instagram, Linkedin } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const Footer = () => {
@@ -58,12 +58,10 @@ const Footer = () => {
                 </Link>
               ))}
             </div>
-            <div className="luxury-card rounded-xl p-4">
-              <div className="flex items-center gap-2 mb-1">
-                <Globe className="w-3.5 h-3.5 text-primary" />
-                <p className="text-xs text-silver">Suggested Domain</p>
-              </div>
-              <p className="text-primary font-semibold text-sm">findreamssolutions.com</p>
+            <div className="space-y-2 text-silver text-sm">
+              <a href="tel:+919738812375" className="block hover:text-primary transition-colors">📞 +91 9738812375</a>
+              <a href="tel:+919663971898" className="block hover:text-primary transition-colors">📞 +91 9663971898</a>
+              <a href="mailto:findreamssolutions@gmail.com" className="block hover:text-primary transition-colors">✉️ findreamssolutions@gmail.com</a>
             </div>
           </div>
         </div>

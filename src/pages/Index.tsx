@@ -1,10 +1,10 @@
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import WhyChooseUs from "@/components/WhyChooseUs";
-import ReviewsSection from "@/components/ReviewsSection";
 import Footer from "@/components/Footer";
 import EMICalculator from "@/components/EMICalculator";
 import HowToApply from "@/components/HowToApply";
+import FounderCard from "@/components/FounderCard";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ArrowRight, Wallet, GraduationCap, Briefcase, Home, LineChart } from "lucide-react";
@@ -96,12 +96,8 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Reviews */}
-      <section className="section-padding sparkle-line-top">
-        <div className="container mx-auto">
-          <ReviewsSection />
-        </div>
-      </section>
+      {/* Founder */}
+      <FounderCard />
 
       <Footer />
     </div>
