@@ -1,6 +1,7 @@
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import WhyChooseUs from "@/components/WhyChooseUs";
+import ReviewsSection from "@/components/ReviewsSection";
 import Footer from "@/components/Footer";
 import EMICalculator from "@/components/EMICalculator";
 import HowToApply from "@/components/HowToApply";
@@ -93,6 +94,13 @@ const Index = () => {
       <section className="section-padding sparkle-line-top">
         <div className="container mx-auto">
           <HowToApply />
+        </div>
+      </section>
+
+      {/* Reviews */}
+      <section className="section-padding sparkle-line-top">
+        <div className="container mx-auto">
+          <ReviewsSection />
         </div>
       </section>
 
