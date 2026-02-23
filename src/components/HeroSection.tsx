@@ -43,9 +43,9 @@ const HeroSection = () => {
         </motion.div>
 
         <motion.h1 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5 }} className="font-display text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold mb-6 leading-tight">
-          Turning Dreams Into
+          Grow Your Dreams
           <br />
-          <span className="gold-gradient-text">Financial Reality</span>
+          <span className="gold-gradient-text animate-shimmer-text">With Us</span>
         </motion.h1>
 
         <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.7 }} className="text-silver text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed">

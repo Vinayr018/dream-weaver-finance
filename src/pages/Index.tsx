@@ -5,7 +5,6 @@ import ReviewsSection from "@/components/ReviewsSection";
 import Footer from "@/components/Footer";
 import EMICalculator from "@/components/EMICalculator";
 import HowToApply from "@/components/HowToApply";
-import FounderCard from "@/components/FounderCard";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ArrowRight, Wallet, GraduationCap, Briefcase, Home, LineChart, FileText, Receipt, TrendingUp } from "lucide-react";
@@ -106,9 +105,6 @@ const Index = () => {
           <ReviewsSection />
         </div>
       </section>
-
-      {/* Founder */}
-      <FounderCard />
 
       <Footer />
     </div>

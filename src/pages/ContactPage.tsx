@@ -2,6 +2,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import PageHero from "@/components/PageHero";
 import FAQSection from "@/components/FAQSection";
+import FounderCard from "@/components/FounderCard";
 import { MapPin, Mail, Phone, Send, Clock } from "lucide-react";
 import { useState } from "react";
 
@@ -100,6 +101,9 @@ const ContactPage = () => {
           <FAQSection />
         </div>
       </section>
+
+      {/* Founder / Leadership */}
+      <FounderCard />
 
       <Footer />
     </div>
