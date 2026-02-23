@@ -8,7 +8,7 @@ import HowToApply from "@/components/HowToApply";
 import FounderCard from "@/components/FounderCard";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { ArrowRight, Wallet, GraduationCap, Briefcase, Home, LineChart } from "lucide-react";
+import { ArrowRight, Wallet, GraduationCap, Briefcase, Home, LineChart, FileText, Receipt, TrendingUp } from "lucide-react";
 
 import imgPersonal from "@/assets/service-personal-loan.jpg";
 import imgEducation from "@/assets/service-education-loan.jpg";
@@ -21,6 +21,9 @@ const services = [
   { icon: GraduationCap, title: "Education Loans", description: "Education financing for students at every level.", image: imgEducation, link: "/loans/education" },
   { icon: Briefcase, title: "Business Loans", description: "Capital solutions for businesses of all sizes.", image: imgBusiness, link: "/loans/business" },
   { icon: Home, title: "Home Loans", description: "Affordable home financing options.", image: imgHome, link: "/loans/home" },
+  { icon: FileText, title: "Income Tax Filing", description: "Hassle-free ITR filing with expert guidance.", image: imgConsulting, link: "/service/income-tax" },
+  { icon: Receipt, title: "GST Filing Services", description: "Stay GST compliant with timely filing.", image: imgConsulting, link: "/service/gst-filing" },
+  { icon: TrendingUp, title: "Investment Guidance", description: "Smart investments for long-term wealth growth.", image: imgConsulting, link: "/service/investment-guidance" },
   { icon: LineChart, title: "Financial Consulting", description: "Expert guidance for long-term wealth.", image: imgConsulting, link: "/services" },
 ];
 
