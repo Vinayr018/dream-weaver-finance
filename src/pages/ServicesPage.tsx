@@ -12,6 +12,9 @@ import {
   Home,
   LineChart,
   ArrowRight,
+  FileText,
+  Receipt,
+  TrendingUp,
 } from "lucide-react";
 
 import imgPersonal from "@/assets/service-personal-loan.jpg";
@@ -48,6 +51,27 @@ const services = [
     description: "Make your dream home a reality with our affordable and transparent home financing options.",
     image: imgHome,
     link: "/loans/home",
+  },
+  {
+    icon: FileText,
+    title: "Income Tax Filing",
+    description: "Hassle-free ITR filing for salaried, self-employed, freelancers & business owners with expert guidance.",
+    image: imgConsulting,
+    link: "/service/income-tax",
+  },
+  {
+    icon: Receipt,
+    title: "GST Filing Services",
+    description: "Complete GST registration, monthly/quarterly filing, reconciliation & compliance support.",
+    image: imgConsulting,
+    link: "/service/gst-filing",
+  },
+  {
+    icon: TrendingUp,
+    title: "Investment Guidance",
+    description: "Smart investment decisions — mutual funds, SIPs, retirement planning & portfolio review.",
+    image: imgConsulting,
+    link: "/service/investment-guidance",
   },
   {
     icon: LineChart,

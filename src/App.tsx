@@ -9,6 +9,7 @@ import ServicesPage from "./pages/ServicesPage";
 import WhyUsPage from "./pages/WhyUsPage";
 import ContactPage from "./pages/ContactPage";
 import LoanDetailPage from "./pages/LoanDetailPage";
+import ServiceDetailPage from "./pages/ServiceDetailPage";
 import NotFound from "./pages/NotFound";
 import WhatsAppFloat from "./components/WhatsAppFloat";
 
@@ -27,6 +28,7 @@ const App = () => (
           <Route path="/why-us" element={<WhyUsPage />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/loans/:type" element={<LoanDetailPage />} />
+          <Route path="/service/:type" element={<ServiceDetailPage />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
