@@ -16,10 +16,10 @@ const HeroSection = () => {
         className="absolute inset-0 z-0"
       >
         <img src={heroBg} alt="" className="w-full h-full object-cover object-top" />
-        {/* Dark overlays to blend with site theme and make text readable */}
-        <div className="absolute inset-0 bg-gradient-to-r from-background via-background/85 to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-background/60" />
-        <div className="absolute inset-0 bg-background/20" />
+        {/* Strong overlays: fully opaque left side, transparent right to show people */}
+        <div className="absolute inset-0 bg-gradient-to-r from-background via-background from-[0%] via-[55%] to-transparent to-[85%]" />
+        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-background/70" />
+        <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/60 to-transparent" />
       </motion.div>
 
       <GoldParticles />
