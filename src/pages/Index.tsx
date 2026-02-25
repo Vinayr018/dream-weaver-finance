@@ -7,7 +7,7 @@ import EMICalculator from "@/components/EMICalculator";
 import HowToApply from "@/components/HowToApply";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { ArrowRight, Wallet, GraduationCap, Briefcase, Home, LineChart, FileText, Receipt, TrendingUp } from "lucide-react";
+import { ArrowRight, Wallet, GraduationCap, Briefcase, Home, LineChart, FileText, Receipt, TrendingUp, Sparkles } from "lucide-react";
 
 import imgPersonal from "@/assets/service-personal-loan.jpg";
 import imgEducation from "@/assets/service-education-loan.jpg";
@@ -33,75 +33,132 @@ const Index = () => {
       <HeroSection />
 
       {/* Services Preview */}
-      <section className="section-padding relative sparkle-line-top overflow-hidden">
-        <div className="container mx-auto">
-          <div className="text-center mb-16">
-            <span className="text-primary text-sm font-semibold uppercase tracking-[0.2em]">Our Services</span>
+      <section className="min-h-screen flex items-center relative sparkle-line-top overflow-hidden py-20 px-4 md:px-8">
+        {/* Bright ambient glows */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-primary/[0.06] rounded-full blur-[200px]" />
+          <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-primary/[0.04] rounded-full blur-[150px]" />
+          <div className="absolute top-1/2 left-0 w-[300px] h-[300px] bg-primary/[0.03] rounded-full blur-[120px]" />
+        </div>
+
+        <div className="container mx-auto relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <motion.div
+              initial={{ scale: 0 }}
+              whileInView={{ scale: 1 }}
+              viewport={{ once: true }}
+              className="inline-flex items-center gap-2 px-5 py-2 rounded-full gold-border-glow bg-primary/[0.06] mb-6"
+            >
+              <Sparkles className="w-4 h-4 text-primary" />
+              <span className="text-sm text-primary font-medium tracking-wide">Our Services</span>
+            </motion.div>
             <h2 className="font-display text-3xl md:text-5xl font-bold mt-3 mb-6">
-              Comprehensive <span className="gold-gradient-text">Financial Solutions</span>
+              Comprehensive <span className="gold-gradient-text animate-shimmer-text">Financial Solutions</span>
             </h2>
             <p className="text-silver max-w-2xl mx-auto text-lg">
               From personal aspirations to business ambitions, we offer a full spectrum of financial services.
             </p>
-          </div>
+          </motion.div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-12">
             {services.map((service, i) => (
               <motion.div
                 key={service.title}
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, y: 50, scale: 0.9 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: i * 0.1 }}
+                transition={{ duration: 0.5, delay: i * 0.08, type: "spring", stiffness: 100 }}
               >
-                <Link to={service.link} className="block group luxury-card rounded-2xl overflow-hidden hover:-translate-y-2 transition-transform duration-500">
-                  <div className="relative h-40 overflow-hidden">
-                    <img src={service.image} alt={service.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent" />
-                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/10 to-transparent translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-1000" />
+                <Link
+                  to={service.link}
+                  className="block group relative rounded-2xl overflow-hidden service-card-premium"
+                >
+                  {/* Image */}
+                  <div className="relative h-48 overflow-hidden">
+                    <img
+                      src={service.image}
+                      alt={service.title}
+                      className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110 group-hover:brightness-110"
+                      loading="lazy"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent" />
+                    {/* Gold sweep on hover */}
+                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/20 to-transparent translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-1000" />
+                    {/* Floating icon */}
+                    <div className="absolute top-4 right-4 w-10 h-10 rounded-full gold-gradient-bg flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 group-hover:rotate-12 shadow-lg">
+                      <ArrowRight className="w-5 h-5 text-primary-foreground" />
+                    </div>
                   </div>
-                  <div className="p-5">
-                    <div className="w-12 h-12 rounded-full gold-border-strong flex items-center justify-center mb-3 bg-primary/[0.06] -mt-10 relative z-10">
+
+                  {/* Content */}
+                  <div className="p-5 relative">
+                    <div className="w-12 h-12 rounded-xl gold-border-strong flex items-center justify-center mb-3 bg-primary/[0.08] group-hover:bg-primary/[0.2] transition-all duration-500 group-hover:scale-110 group-hover:rotate-3 -mt-10 relative z-10">
                       <service.icon className="w-5 h-5 text-primary" />
                     </div>
-                    <h3 className="font-display text-lg font-bold mb-1 group-hover:text-primary transition-colors">{service.title}</h3>
-                    <p className="text-silver text-sm mb-2">{service.description}</p>
-                    <span className="inline-flex items-center gap-1 text-primary text-xs font-semibold group-hover:gap-2 transition-all">
-                      Learn More <ArrowRight className="w-3 h-3" />
+                    <h3 className="font-display text-lg font-bold mb-1.5 group-hover:text-primary transition-colors duration-300">{service.title}</h3>
+                    <p className="text-silver text-sm leading-relaxed mb-3">{service.description}</p>
+                    <span className="inline-flex items-center gap-1.5 text-primary text-xs font-semibold group-hover:gap-3 transition-all duration-300">
+                      Explore <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
                     </span>
+                    {/* Bottom gold line */}
+                    <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-primary to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
                   </div>
                 </Link>
               </motion.div>
             ))}
           </div>
 
-          <div className="text-center">
-            <Link to="/services" className="inline-flex items-center gap-2 gold-gradient-bg text-primary-foreground px-8 py-3 rounded-xl font-semibold gold-glow-strong hover:scale-105 transition-transform">
-              View All Services <ArrowRight className="w-5 h-5" />
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center"
+          >
+            <Link to="/services" className="group inline-flex items-center gap-2 gold-gradient-bg text-primary-foreground px-10 py-4 rounded-2xl font-semibold text-lg gold-glow-strong hover:scale-105 transition-all duration-300">
+              View All Services <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform" />
             </Link>
-          </div>
+          </motion.div>
         </div>
       </section>
 
-      <WhyChooseUs />
+      {/* Why Choose Us - full viewport */}
+      <section className="min-h-screen flex items-center sparkle-line-top py-20 px-4 md:px-8">
+        <div className="container mx-auto">
+          <WhyChooseUs />
+        </div>
+      </section>
 
       {/* EMI Calculator Preview */}
-      <section className="section-padding sparkle-line-top">
-        <div className="container mx-auto">
+      <section className="min-h-screen flex items-center sparkle-line-top relative py-20 px-4 md:px-8">
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-1/3 right-1/4 w-[600px] h-[600px] bg-primary/[0.05] rounded-full blur-[180px]" />
+        </div>
+        <div className="container mx-auto relative z-10">
           <EMICalculator />
         </div>
       </section>
 
       {/* How to Apply */}
-      <section className="section-padding sparkle-line-top">
-        <div className="container mx-auto">
+      <section className="min-h-screen flex items-center sparkle-line-top relative py-20 px-4 md:px-8">
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute bottom-1/4 left-1/4 w-[500px] h-[500px] bg-primary/[0.04] rounded-full blur-[160px]" />
+        </div>
+        <div className="container mx-auto relative z-10">
           <HowToApply />
         </div>
       </section>
 
       {/* Reviews */}
-      <section className="section-padding sparkle-line-top">
-        <div className="container mx-auto">
+      <section className="min-h-screen flex items-center sparkle-line-top relative py-20 px-4 md:px-8">
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-primary/[0.04] rounded-full blur-[200px]" />
+        </div>
+        <div className="container mx-auto relative z-10">
           <ReviewsSection />
         </div>
       </section>

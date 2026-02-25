@@ -17,9 +17,9 @@ const HeroSection = () => {
       >
         <img src={heroBg} alt="" className="w-full h-full object-cover object-top" />
         {/* Strong overlays: fully opaque left side, transparent right to show people */}
-        <div className="absolute inset-0 bg-gradient-to-r from-background via-background from-[0%] via-[55%] to-transparent to-[85%]" />
-        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-background/70" />
-        <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/60 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-background via-background/90 from-[0%] via-[50%] to-transparent to-[80%]" />
+        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/30 to-background/50" />
+        <div className="absolute inset-0 bg-gradient-to-r from-background/90 via-background/40 to-transparent" />
       </motion.div>
 
       <GoldParticles />
