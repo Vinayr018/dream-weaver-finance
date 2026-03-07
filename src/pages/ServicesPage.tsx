@@ -22,6 +22,9 @@ import imgEducation from "@/assets/service-education-loan.jpg";
 import imgBusiness from "@/assets/service-business-loan.jpg";
 import imgHome from "@/assets/service-home-loan.jpg";
 import imgConsulting from "@/assets/service-consulting.jpg";
+import imgIncomeTax from "@/assets/service-income-tax.jpg";
+import imgGstFiling from "@/assets/service-gst-filing.jpg";
+import imgInvestment from "@/assets/service-investment.jpg";
 
 const services = [
   {
