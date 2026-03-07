@@ -22,6 +22,9 @@ import imgEducation from "@/assets/service-education-loan.jpg";
 import imgBusiness from "@/assets/service-business-loan.jpg";
 import imgHome from "@/assets/service-home-loan.jpg";
 import imgConsulting from "@/assets/service-consulting.jpg";
+import imgIncomeTax from "@/assets/service-income-tax.jpg";
+import imgGstFiling from "@/assets/service-gst-filing.jpg";
+import imgInvestment from "@/assets/service-investment.jpg";
 
 const services = [
   {
@@ -56,21 +59,21 @@ const services = [
     icon: FileText,
     title: "Income Tax Filing",
     description: "Hassle-free ITR filing for salaried, self-employed, freelancers & business owners with expert guidance.",
-    image: imgConsulting,
+    image: imgIncomeTax,
     link: "/service/income-tax",
   },
   {
     icon: Receipt,
     title: "GST Filing Services",
     description: "Complete GST registration, monthly/quarterly filing, reconciliation & compliance support.",
-    image: imgConsulting,
+    image: imgGstFiling,
     link: "/service/gst-filing",
   },
   {
     icon: TrendingUp,
     title: "Investment Guidance",
     description: "Smart investment decisions — mutual funds, SIPs, retirement planning & portfolio review.",
-    image: imgConsulting,
+    image: imgInvestment,
     link: "/service/investment-guidance",
   },
   {
