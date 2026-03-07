@@ -59,10 +59,7 @@ const services = [
     icon: FileText,
     title: "Income Tax Filing",
     description: "Hassle-free ITR filing for salaried, self-employed, freelancers & business owners with expert guidance.",
-    image: imgConsulting,
-    link: "/service/income-tax",
-  },
-  {
+    image: imgIncomeTax,
     icon: Receipt,
     title: "GST Filing Services",
     description: "Complete GST registration, monthly/quarterly filing, reconciliation & compliance support.",
