@@ -70,7 +70,7 @@ const services = [
     icon: TrendingUp,
     title: "Investment Guidance",
     description: "Smart investment decisions — mutual funds, SIPs, retirement planning & portfolio review.",
-    image: imgConsulting,
+    image: imgInvestment,
     link: "/service/investment-guidance",
   },
   {
