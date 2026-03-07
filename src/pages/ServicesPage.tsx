@@ -63,7 +63,7 @@ const services = [
     icon: Receipt,
     title: "GST Filing Services",
     description: "Complete GST registration, monthly/quarterly filing, reconciliation & compliance support.",
-    image: imgConsulting,
+    image: imgGstFiling,
     link: "/service/gst-filing",
   },
   {
