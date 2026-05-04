@@ -1,6 +1,8 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import PageHero from "@/components/PageHero";
+import SEO from "@/components/SEO";
+import { breadcrumbSchema } from "@/lib/seo";
 import { Target, Eye } from "lucide-react";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
@@ -37,6 +39,12 @@ const Counter = ({ end, label, suffix = "+" }: { end: number; label: string; suf
 const AboutPage = () => {
   return (
     <div className="min-h-screen bg-background">
+      <SEO
+        title="About Us | Findreams Solutions - Financial Experts in Tumakuru"
+        description="Learn about Findreams Solutions, a premier financial services company in Tumakuru, Karnataka, dedicated to turning your dreams into financial reality."
+        path="/about"
+        schema={breadcrumbSchema([{ name: "Home", path: "/" }, { name: "About", path: "/about" }])}
+      />
       <Navbar />
       <PageHero
         title="About"
