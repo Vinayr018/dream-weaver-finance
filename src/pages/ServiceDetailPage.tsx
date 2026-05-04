@@ -4,6 +4,8 @@ import Footer from "@/components/Footer";
 import PageHero from "@/components/PageHero";
 import { motion } from "framer-motion";
 import { CheckCircle2, Send, FileText, Receipt, TrendingUp } from "lucide-react";
+import SEO from "@/components/SEO";
+import { breadcrumbSchema, serviceSchema } from "@/lib/seo";
 import { useState } from "react";
 
 interface ServiceInfo {
@@ -138,6 +140,19 @@ const ServiceDetailPage = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <SEO
+        title={`${service.title} ${service.highlight} | Findreams Solutions`}
+        description={service.subtitle}
+        path={`/service/${type}`}
+        schema={[
+          breadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "Services", path: "/services" },
+            { name: `${service.title} ${service.highlight}`, path: `/service/${type}` },
+          ]),
+          serviceSchema(`${service.title} ${service.highlight}`, service.subtitle, `/service/${type}`),
+        ]}
+      />
       <Navbar />
       <PageHero
         title={service.title}
