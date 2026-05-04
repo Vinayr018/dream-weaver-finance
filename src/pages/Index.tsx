@@ -1,5 +1,7 @@
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
+import SEO from "@/components/SEO";
+import { organizationSchema, websiteSchema } from "@/lib/seo";
 import WhyChooseUs from "@/components/WhyChooseUs";
 import ReviewsSection from "@/components/ReviewsSection";
 import Footer from "@/components/Footer";
@@ -32,6 +34,13 @@ const services = [
 const Index = () => {
   return (
     <div className="min-h-screen bg-background">
+      <SEO
+        title="Findreams Solutions | Loans, Tax & Financial Services in Tumakuru"
+        description="Premium financial services in Tumakuru, Karnataka. Personal, education, business & home loans, GST filing, ITR & investment guidance. Trusted partner for your dreams."
+        keywords="personal loan, education loan, business loan, home loan, GST filing, ITR filing, investment, Tumakuru, Karnataka, financial services"
+        path="/"
+        schema={[organizationSchema, websiteSchema]}
+      />
       <Navbar />
       <HeroSection />
 
