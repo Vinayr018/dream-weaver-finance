@@ -114,6 +114,7 @@ const ContactSection = () => {
                 className="w-full px-4 py-3 rounded-xl bg-muted/50 border border-border/50 text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/30 transition-all"
                 placeholder="Your name"
               />
+              {errors.name && <p className="text-destructive text-xs mt-1.5">{errors.name}</p>}
             </div>
             <div className="grid sm:grid-cols-2 gap-4">
               <div>
@@ -125,6 +126,7 @@ const ContactSection = () => {
                   className="w-full px-4 py-3 rounded-xl bg-muted/50 border border-border/50 text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/30 transition-all"
                   placeholder="your@email.com"
                 />
+                {errors.email && <p className="text-destructive text-xs mt-1.5">{errors.email}</p>}
               </div>
               <div>
                 <label className="text-sm font-medium mb-1.5 block text-silver-light">Phone</label>
@@ -135,6 +137,7 @@ const ContactSection = () => {
                   className="w-full px-4 py-3 rounded-xl bg-muted/50 border border-border/50 text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/30 transition-all"
                   placeholder="+91 00000 00000"
                 />
+                {errors.phone && <p className="text-destructive text-xs mt-1.5">{errors.phone}</p>}
               </div>
             </div>
             <div>
@@ -146,12 +149,14 @@ const ContactSection = () => {
                 className="w-full px-4 py-3 rounded-xl bg-muted/50 border border-border/50 text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/30 transition-all resize-none"
                 placeholder="How can we help you?"
               />
+              {errors.message && <p className="text-destructive text-xs mt-1.5">{errors.message}</p>}
             </div>
             <button
               type="submit"
-              className="w-full gold-gradient-bg text-primary-foreground py-3.5 rounded-xl font-semibold flex items-center justify-center gap-2 transition-all gold-glow-strong hover:scale-[1.02] group"
+              disabled={submitting}
+              className="w-full gold-gradient-bg text-primary-foreground py-3.5 rounded-xl font-semibold flex items-center justify-center gap-2 transition-all gold-glow-strong hover:scale-[1.02] group disabled:opacity-60 disabled:cursor-not-allowed"
             >
-              Send Message
+              {submitting ? "Sending..." : "Send Message"}
               <Send className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </button>
           </form>
