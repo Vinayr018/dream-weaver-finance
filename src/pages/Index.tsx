@@ -14,15 +14,18 @@ import imgEducation from "@/assets/service-education-loan.jpg";
 import imgBusiness from "@/assets/service-business-loan.jpg";
 import imgHome from "@/assets/service-home-loan.jpg";
 import imgConsulting from "@/assets/service-consulting.jpg";
+import imgIncomeTax from "@/assets/service-income-tax.jpg";
+import imgGstFiling from "@/assets/service-gst-filing.jpg";
+import imgInvestment from "@/assets/service-investment.jpg";
 
 const services = [
   { icon: Wallet, title: "Personal Loans", description: "Flexible personal loans with competitive rates.", image: imgPersonal, link: "/loans/personal" },
   { icon: GraduationCap, title: "Education Loans", description: "Education financing for students at every level.", image: imgEducation, link: "/loans/education" },
   { icon: Briefcase, title: "Business Loans", description: "Capital solutions for businesses of all sizes.", image: imgBusiness, link: "/loans/business" },
   { icon: Home, title: "Home Loans", description: "Affordable home financing options.", image: imgHome, link: "/loans/home" },
-  { icon: FileText, title: "Income Tax Filing", description: "Hassle-free ITR filing with expert guidance.", image: imgConsulting, link: "/service/income-tax" },
-  { icon: Receipt, title: "GST Filing Services", description: "Stay GST compliant with timely filing.", image: imgConsulting, link: "/service/gst-filing" },
-  { icon: TrendingUp, title: "Investment Guidance", description: "Smart investments for long-term wealth growth.", image: imgConsulting, link: "/service/investment-guidance" },
+  { icon: FileText, title: "Income Tax Filing", description: "Hassle-free ITR filing with expert guidance.", image: imgIncomeTax, link: "/service/income-tax" },
+  { icon: Receipt, title: "GST Filing Services", description: "Stay GST compliant with timely filing.", image: imgGstFiling, link: "/service/gst-filing" },
+  { icon: TrendingUp, title: "Investment Guidance", description: "Smart investments for long-term wealth growth.", image: imgInvestment, link: "/service/investment-guidance" },
   { icon: LineChart, title: "Financial Consulting", description: "Expert guidance for long-term wealth.", image: imgConsulting, link: "/services" },
 ];
 
