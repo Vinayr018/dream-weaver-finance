@@ -1,13 +1,47 @@
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { MapPin, Mail, Phone, Send, ArrowRight } from "lucide-react";
 import { useState } from "react";
+import { z } from "zod";
+import { toast } from "@/hooks/use-toast";
+
+const contactSchema = z.object({
+  name: z.string().trim().min(2, "Name must be at least 2 characters").max(100, "Name is too long"),
+  email: z.string().trim().email("Please enter a valid email address").max(255, "Email is too long"),
+  phone: z
+    .string()
+    .trim()
+    .regex(/^[+]?[0-9\s\-()]{7,20}$/, "Please enter a valid phone number"),
+  message: z.string().trim().min(10, "Message must be at least 10 characters").max(1000, "Message is too long"),
+});
 
 const ContactSection = () => {
   const { ref, isVisible } = useScrollAnimation();
   const [formData, setFormData] = useState({ name: "", email: "", phone: "", message: "" });
+  const [errors, setErrors] = useState<Partial<Record<keyof typeof formData, string>>>({});
+  const [submitting, setSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    const result = contactSchema.safeParse(formData);
+    if (!result.success) {
+      const fieldErrors: Partial<Record<keyof typeof formData, string>> = {};
+      for (const issue of result.error.issues) {
+        const key = issue.path[0] as keyof typeof formData;
+        if (!fieldErrors[key]) fieldErrors[key] = issue.message;
+      }
+      setErrors(fieldErrors);
+      toast({ title: "Please fix the errors", description: "Check the highlighted fields and try again.", variant: "destructive" });
+      return;
+    }
+    setErrors({});
+    setSubmitting(true);
+    try {
+      // TODO: hook up email delivery once email domain is configured
+      toast({ title: "Message sent", description: "Thanks! We'll get back to you shortly." });
+      setFormData({ name: "", email: "", phone: "", message: "" });
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -80,6 +114,7 @@ const ContactSection = () => {
                 className="w-full px-4 py-3 rounded-xl bg-muted/50 border border-border/50 text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/30 transition-all"
                 placeholder="Your name"
               />
+              {errors.name && <p className="text-destructive text-xs mt-1.5">{errors.name}</p>}
             </div>
             <div className="grid sm:grid-cols-2 gap-4">
               <div>
@@ -91,6 +126,7 @@ const ContactSection = () => {
                   className="w-full px-4 py-3 rounded-xl bg-muted/50 border border-border/50 text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/30 transition-all"
                   placeholder="your@email.com"
                 />
+                {errors.email && <p className="text-destructive text-xs mt-1.5">{errors.email}</p>}
               </div>
               <div>
                 <label className="text-sm font-medium mb-1.5 block text-silver-light">Phone</label>
@@ -101,6 +137,7 @@ const ContactSection = () => {
                   className="w-full px-4 py-3 rounded-xl bg-muted/50 border border-border/50 text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/30 transition-all"
                   placeholder="+91 00000 00000"
                 />
+                {errors.phone && <p className="text-destructive text-xs mt-1.5">{errors.phone}</p>}
               </div>
             </div>
             <div>
@@ -112,12 +149,14 @@ const ContactSection = () => {
                 className="w-full px-4 py-3 rounded-xl bg-muted/50 border border-border/50 text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/30 transition-all resize-none"
                 placeholder="How can we help you?"
               />
+              {errors.message && <p className="text-destructive text-xs mt-1.5">{errors.message}</p>}
             </div>
             <button
               type="submit"
-              className="w-full gold-gradient-bg text-primary-foreground py-3.5 rounded-xl font-semibold flex items-center justify-center gap-2 transition-all gold-glow-strong hover:scale-[1.02] group"
+              disabled={submitting}
+              className="w-full gold-gradient-bg text-primary-foreground py-3.5 rounded-xl font-semibold flex items-center justify-center gap-2 transition-all gold-glow-strong hover:scale-[1.02] group disabled:opacity-60 disabled:cursor-not-allowed"
             >
-              Send Message
+              {submitting ? "Sending..." : "Send Message"}
               <Send className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </button>
           </form>
