@@ -3,6 +3,8 @@ import Footer from "@/components/Footer";
 import PageHero from "@/components/PageHero";
 import FAQSection from "@/components/FAQSection";
 import FounderCard from "@/components/FounderCard";
+import SEO from "@/components/SEO";
+import { breadcrumbSchema } from "@/lib/seo";
 import { MapPin, Mail, Phone, Send, Clock } from "lucide-react";
 import { useState } from "react";
 
@@ -15,6 +17,12 @@ const ContactPage = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <SEO
+        title="Contact Us | Findreams Solutions - Get in Touch Today"
+        description="Contact Findreams Solutions in Tumakuru, Karnataka. Call +91 9738812375 or email findreamssolutions@gmail.com for loans, tax filing & financial guidance."
+        path="/contact"
+        schema={breadcrumbSchema([{ name: "Home", path: "/" }, { name: "Contact", path: "/contact" }])}
+      />
       <Navbar />
       <PageHero
         title="Get In"
