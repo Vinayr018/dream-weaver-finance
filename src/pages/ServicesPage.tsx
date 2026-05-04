@@ -90,6 +90,12 @@ const services = [
 const ServicesPage = () => {
   return (
     <div className="min-h-screen bg-background">
+      <SEO
+        title="Our Services | Loans, Tax & Investment - Findreams Solutions"
+        description="Explore loans (personal, education, business, home), GST filing, ITR filing, and investment guidance. Comprehensive financial services in Tumakuru, Karnataka."
+        path="/services"
+        schema={breadcrumbSchema([{ name: "Home", path: "/" }, { name: "Services", path: "/services" }])}
+      />
       <Navbar />
       <PageHero
         title="Our"
