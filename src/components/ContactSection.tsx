@@ -1,13 +1,47 @@
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { MapPin, Mail, Phone, Send, ArrowRight } from "lucide-react";
 import { useState } from "react";
+import { z } from "zod";
+import { toast } from "@/hooks/use-toast";
+
+const contactSchema = z.object({
+  name: z.string().trim().min(2, "Name must be at least 2 characters").max(100, "Name is too long"),
+  email: z.string().trim().email("Please enter a valid email address").max(255, "Email is too long"),
+  phone: z
+    .string()
+    .trim()
+    .regex(/^[+]?[0-9\s\-()]{7,20}$/, "Please enter a valid phone number"),
+  message: z.string().trim().min(10, "Message must be at least 10 characters").max(1000, "Message is too long"),
+});
 
 const ContactSection = () => {
   const { ref, isVisible } = useScrollAnimation();
   const [formData, setFormData] = useState({ name: "", email: "", phone: "", message: "" });
+  const [errors, setErrors] = useState<Partial<Record<keyof typeof formData, string>>>({});
+  const [submitting, setSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    const result = contactSchema.safeParse(formData);
+    if (!result.success) {
+      const fieldErrors: Partial<Record<keyof typeof formData, string>> = {};
+      for (const issue of result.error.issues) {
+        const key = issue.path[0] as keyof typeof formData;
+        if (!fieldErrors[key]) fieldErrors[key] = issue.message;
+      }
+      setErrors(fieldErrors);
+      toast({ title: "Please fix the errors", description: "Check the highlighted fields and try again.", variant: "destructive" });
+      return;
+    }
+    setErrors({});
+    setSubmitting(true);
+    try {
+      // TODO: hook up email delivery once email domain is configured
+      toast({ title: "Message sent", description: "Thanks! We'll get back to you shortly." });
+      setFormData({ name: "", email: "", phone: "", message: "" });
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
