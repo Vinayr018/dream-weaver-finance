@@ -1,6 +1,8 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import PageHero from "@/components/PageHero";
+import SEO from "@/components/SEO";
+import { breadcrumbSchema } from "@/lib/seo";
 import ReviewsSection from "@/components/ReviewsSection";
 import { ShieldCheck, Zap, Handshake, Award, Clock, Users, Globe2, HeartHandshake } from "lucide-react";
 import { motion } from "framer-motion";
@@ -19,6 +21,12 @@ const features = [
 const WhyUsPage = () => {
   return (
     <div className="min-h-screen bg-background">
+      <SEO
+        title="Why Choose Us | Findreams Solutions - Trusted Financial Partner"
+        description="Discover why 5000+ clients trust Findreams Solutions: fast approvals, transparent process, expert guidance, and personalized financial service in Tumakuru."
+        path="/why-us"
+        schema={breadcrumbSchema([{ name: "Home", path: "/" }, { name: "Why Us", path: "/why-us" }])}
+      />
       <Navbar />
       <PageHero
         title="Why Choose"
