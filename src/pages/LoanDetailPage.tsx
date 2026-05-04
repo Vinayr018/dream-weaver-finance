@@ -8,6 +8,8 @@ import FAQSection from "@/components/FAQSection";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { Send, CheckCircle2, ArrowRight } from "lucide-react";
+import SEO from "@/components/SEO";
+import { breadcrumbSchema, serviceSchema } from "@/lib/seo";
 
 import imgPersonal from "@/assets/service-personal-loan.jpg";
 import imgEducation from "@/assets/service-education-loan.jpg";
@@ -173,6 +175,20 @@ const LoanDetailPage = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <SEO
+        title={`${loan.title} ${loan.highlight} | Findreams Solutions`}
+        description={loan.subtitle}
+        path={`/loans/${type}`}
+        image={loan.image}
+        schema={[
+          breadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "Services", path: "/services" },
+            { name: `${loan.title} ${loan.highlight}`, path: `/loans/${type}` },
+          ]),
+          serviceSchema(`${loan.title} ${loan.highlight}`, loan.subtitle, `/loans/${type}`),
+        ]}
+      />
       <Navbar />
       <PageHero
         title={loan.title}
